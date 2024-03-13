@@ -92,10 +92,7 @@ class DOMHandler {
     
         if (project) {
             console.log("Project exists:", project);
-    
-            const tasks = project.getTasks && typeof project.getTasks === 'function'
-                ? project.getTasks()
-                : [];
+            const tasks = project.tasks; // Access the tasks property directly
     
             if (Array.isArray(tasks)) {
                 console.log("Project tasks:", tasks);
@@ -103,7 +100,7 @@ class DOMHandler {
                 for (let i = 0; i < tasks.length; i++) {
                     const task = tasks[i];
                     console.log("Task ", i + 1, ":", task);
-                    DOMHandler.renderTask(task, projectName); // Pass projectName as an argument
+                    DOMHandler.renderTask(task, projectName); // Pass projectName to renderTask
                 }
             } else {
                 console.error("Project tasks is not an array.");
@@ -112,6 +109,7 @@ class DOMHandler {
             console.error("Project is undefined for name:", projectName);
         }
     }
+    
     
     
 
